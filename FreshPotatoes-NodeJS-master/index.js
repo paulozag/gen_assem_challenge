@@ -22,8 +22,26 @@ app.get('/films/:id/recommendations', getFilmRecommendations);
 // ROUTE HANDLER
 function getFilmRecommendations(req, res) {
   let filmID = req.params.id
-  db.all('select * from films where id=?', filmID, function(err, rows){
-    console.log(rows[0])
+
+  let getFilmByID = new Promise(function(resolve,reject){
+    db.all('select * from films where id=?', filmID, function(err, rows){
+      resolve(rows[0])
+    })
+  })
+
+  let buildQuery = function(film){
+    // pull necessary fields from film and build query to :
+    // select all films of same genre filtered by (review count > 5 AND average review > 4)
+    // filtered by +/- 15 year date range
+    // ordered by id
+    // paginated and limited if requested
+    // return query string
+  }
+
+  let getMatchingFilms = new Promise(function(resolve, reject){
+    // build query string
+    // perform query
+    // resolve (queried collection)
   })
 
 
