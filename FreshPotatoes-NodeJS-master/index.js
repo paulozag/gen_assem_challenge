@@ -16,7 +16,8 @@ app.get('/films/:id/recommendations', getFilmRecommendations);
 
 // ROUTE HANDLER
 function getFilmRecommendations(req, res) {
-  res.status(500).send('Not Implemented');
+  res.status(200)
+  res.end()
 }
 
 module.exports = app;
