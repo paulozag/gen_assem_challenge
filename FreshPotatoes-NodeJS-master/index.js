@@ -16,8 +16,21 @@ app.get('/films/:id/recommendations', getFilmRecommendations);
 
 // ROUTE HANDLER
 function getFilmRecommendations(req, res) {
-  res.status(200)
-  res.end()
+  responseObject = getResponseObject();
+  console.log(responseObject)
+  res.setHeader('Content-Type', 'application/json');
+  res.status(200);
+  res.send(JSON.stringify(responseObject));
+}
+
+let getResponseObject = () => {
+  return {
+    recommendations: [],
+    meta: {
+      limit: false,
+      offset: false
+    }
+  };
 }
 
 module.exports = app;
